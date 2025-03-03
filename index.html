@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashing Image with Music</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        body {
+            background-color: black;
+        }
+        img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: absolute;
+            transition: filter 0.001s ease-in-out;
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img id="flashingImage" src="Screenshot 2025-03-03 154555.png" alt="Flashing Image">
+    <audio id="backgroundMusic" loop>
+        <source src="Evil Jordan Popular.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+    <script>
+        const img = document.getElementById("flashingImage");
+        const music = document.getElementById("backgroundMusic");
+
+        // Flashing effect
+        setInterval(() => {
+            img.style.filter = img.style.filter === "invert(1)" ? "invert(0)" : "invert(1)";
+        }, 50);
+
+        // Play music when user interacts
+        document.addEventListener("click", () => {
+            music.play();
+        }, { once: true });
+    </script>
+</body>
+</html>
